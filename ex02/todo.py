@@ -76,10 +76,10 @@ def filterOdd(L):
     return filterL(L, lambda x: x % 2)
 
 def filterPositive(L):
-    return filter(L, lambda x: x > 0)
+    return filterL(L, lambda x: x > 0)
 
 def filterGtN(L, N):
-    return filter(L, lambda x: x > N)
+    return filterL(L, lambda x: x > N)
 
 def filterPrimes(L):
     return filterL(L, prime)
