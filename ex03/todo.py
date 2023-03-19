@@ -38,7 +38,7 @@ def buildLenFreq(L):
     palavras daquele tamanho. Por exemplo:
     ins(['abc', 'xd', 'b', 'xxx']) = {1: ['b'], 2: ['xd'], 3: ['abc', 'xxx']}
     """
-    return None
+    return reduce(lambda acc, b: add2Dict(acc, len(b), b), L, {})
 
 def incValue(D, N):
     """Esta funcao incrementa o valor associado a chave N dentro do dicionario
@@ -53,12 +53,25 @@ def countFirsts(L):
     Por exemplo, countFirsts(['python', 'is', 'pythy']) === {'i': 1, 'p': 2}
     Note que essa funcao retorna um dicionario com cada caracter associada ao
     numero de strings que comecam com aquele caracter.
+    
+    
+    mapa = firstChars(L)
+    dicio = {}
+    
+    for letter in mapa:
+        if letter in dicio:
+            dicio = incValue(dicio, letter)
+        else:
+            dicio[letter] = 1
+            
     """
-    return None
+        
+    return reduce(lambda acc, b: incValue(acc, b), firstChars(L), {})
 
 def mostCommonFirstChar(L):
     """ Retorna a letra mais comum entre as primeiras letras de strings em L.
     Por exemplo:
     mostCommonFirstChar(['python', 'is', 'pythy']) === 'p'
     """
-    return 'Z'
+    dictionary = countFirsts(L)
+    return reduce(lambda acc, b: acc if dictionary[acc] >= dictionary[b] else b, countFirsts(L).keys())
