@@ -73,17 +73,13 @@ def filterL(L, f):
         return (H, T) if f(H) else T
 
 def filterOdd(L):
-    # TODO
-    return None
+    return filterL(L, lambda x: x % 2)
 
 def filterPositive(L):
-    # TODO
-    return None
+    return filter(L, lambda x: x > 0)
 
 def filterGtN(L, N):
-    # TODO
-    return None
+    return filter(L, lambda x: x > N)
 
 def filterPrimes(L):
-    # TODO
-    return None
+    return filterL(L, prime)
